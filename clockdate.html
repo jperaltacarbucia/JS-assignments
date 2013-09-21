@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Clock Date</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script language="JavaScript"> 
+    var timerID = null
+    var timerRunning = false
+    
+    function MakeArray(size) {
+    this.lenght = size;
+        for(var i = 1; i <= size; i++)
+    {
+    this[i]="";
+    }
+    return this;
+    }
+    
+    function stopclock (){
+        if(timerRunning)
+        clearTimeout(timerID);
+        timerRunning = false
+    }
+    
+    function showtime () {
+    var now = new Date();
+    var year = now.getYear() +1900;
+    var month = now.getMonth() + 1;
+    var date = now.getDate();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    var day = now.getDay();
+    
+    Day = new MakeArray(7);
+    Day[0]="SUN";
+    Day[1]="MON";
+    Day[2]="TUE";
+    Day[3]="WED";
+    Day[4]="THU";
+    Day[5]="FRI";
+    Day[6]="SAT";
+    
+    var timeValue="";
+    timeValue += (Day[day]) + "  ";
+    timeValue += ((month > 10) ? "0" : " ") + month + "-";
+    timeValue += date + "-" + year + "  ";
+    timeValue += ((hours <= 12) ? hours : hours - 12);
+    timeValue += ((minutes < 10) ? ":0" : ":") + minutes;
+    timeValue += ((seconds < 10) ? ":0" : ":") + seconds;
+    timeValue += (hours < 12) ? "AM" : " PM";
+    document.clockdate.face.value = timeValue;
+    timerID = setTimeout("showtime()",1000);
+    timeRunning = true
+    }
+    
+    function startclock () {
+        stopclock();
+        showtime();
+    }
+    
+</script>
+    
+</head>
+    
+<body onLoad="startclock()">
+<form name='clockdate'>
+<input type=text name='face' size='27' value=''>
+</form>
+
+</body>
+</html>

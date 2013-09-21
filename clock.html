@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Clock</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script language="JavaScript">
+    var timerID = null;
+    var timerRunning = false;
+    var id,pause=0,position=0;
+    
+    
+    function stopclock (){
+        if(timerRunning)
+            clearTimeout(timerID);
+        timerRunning = false;
+}
+
+    function showtime () {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var timeValue = "" + ((hours >12) ? hours -12 :hours)
+            timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+            timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+            timeValue += (hours >= 12) ? " P.M." : " A.M."
+            document.clock.face.value = timeValue;
+            timerID = setTimeout("showtime()",1000);
+            timerRunning = true;
+}
+
+    function startclock () {
+        stopclock();
+        showtime();
+}
+
+</script>
+</head>
+
+
+<body onLoad="startclock()">
+
+
+<p>Hide from old browsers, Undefined is the value of a variable with no value.
+Variables can be emptied by setting the value to null; </p>
+
+<p>
+    http://www.w3schools.com/js/js_operators.asp
+    
+    Operators=======
+    = is used to assign values. <br>
+    
+    + is used to add values. <br>
+    
+    The assignment operator = is used to assign values to JavaScript variables
+    <br>
+    
+    The arithmetic operator + is used to add values together. <br>
+</p>
+
+<p>http://www.w3schools.com/js/js_comparisons.asp</p>
+
+
+<form name="clock" onSubmit="0">
+<input type="text" name="face" size="13" value="">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
