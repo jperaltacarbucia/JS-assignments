@@ -1,0 +1,12 @@
+for (var i=0; i<document.anchors.length; i++) {
+			if (document.anchors[i].name==anchorname) { found=1; break; }
+			}
+		if (found==0) {
+			coordinates.x=0; coordinates.y=0; return coordinates;
+			}
+		x=document.anchors[i].x;
+		y=document.anchors[i].y;
+		}
+	else {
+		coordinates.x=0; coordinates.y=0; return coordinates;
+		}
