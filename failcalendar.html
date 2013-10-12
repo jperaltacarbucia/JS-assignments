@@ -1,0 +1,207 @@
+<html>
+<head>
+
+    <title>Calendar</title>
+    
+    <script language="JavaScript">
+        
+    function setToday() {
+        var now = new Date();
+        var day = now.getDate();
+        var month = now.getMonth();
+        var year = now.getYear();
+        year += 1900;
+        this.focusDay = day;
+        
+        
+        document.calControl.month.selectedIndex = month;
+        document.calControl.year.value = year;
+        displayCalendar(month, year);
+    }
+    
+    function isFourDigitYear(year) {
+        if (year.lenght != 4) {
+        alert ("Sorry, the year must be four-digits in lenght.");
+    
+        document.calControl.year.select();
+        document.calControl.year.focus();
+        } else { return true; }
+    }
+    
+    
+    function selectDate() {
+        var year = document.calControl.year.value;
+        if (isFourDigitYear(year)) {
+            var day = 0;
+            var month = document.calControl.month.selectedIndexl
+            displayCalendar(month, year);
+        }
+    }
+    
+    
+    function setPreviousYear() {
+        var year = document.calControl.year.value;
+        if (isFourDigitYear(year)) {
+            var day = 0;
+            var month = document.calControl.month.selectedIndex;
+            year--;
+            document.calControl.year.value = year;
+            displayCalendar(month, year);
+        }
+    }
+    
+    
+    function setPreviousMonth() {
+        var month = document.calControl.month.value;
+        if (isFourDigitYear(year)) {
+            var day = 0;
+            var month = document.calControl.month.selectedIndex;
+            if (month == 0) {
+                month = 11;
+            if (year > 1000) {
+                year--;
+                document.calControl.year.value = year;
+            }
+            
+                } else {month--;}
+                document.calControl.month.selectedIndex = month;
+                displayCalendar(month, year);
+            }
+        }
+        
+function setNextMonth() {
+    var year = document.calControl.year.value;
+    if (isFourDigitYear(year)) {
+        var day = 0;
+        var month = document.calCalculator.month.selectedIndex;
+    if (month ==11) {
+        month = 0;
+        year++;
+        document.calControl.year.value = year;
+            } else {month++; }
+            document.calControl.month.selectedIndex = month;
+            displayCalendar(month, year);
+    }
+}
+
+function setNextYear() {
+    var year = document.calControl.year.value;
+    if (isFourDigitYear(year)) {
+        var day = 0;
+        var month = document.calControl.month.selectedIndex;
+        year++;
+        document.calControl.year.value = year;
+        displayCalendar(month, year);
+        
+    }
+}
+
+
+function displayCalendar(month, year) {
+    month = parseInt(month);
+    year = parseInt(year);
+    var i = 0;
+    var days = getDaysInMonth(month+1, year);
+    var firstOfMonth = new Date (year, month, 1);
+    var startingPos = firstOfMonth.getDay();
+    days += startingPos;
+    document.calButtons.calPage.value = "Su Mo Tu We Th Fr Sa";
+    document.calButtons.calPage.value += "\n ----------------";
+        for (i = 0; i < startingPos; i++) {
+        if (i%7 == 0)
+        document.calButtons.calPage.value += "\n ";
+        document.calButtons.calPage.value += "   ";
+        
+}
+
+    for (i = startingPos; i < days; i++) {
+    if ( i%7 == 0) document.calButtons.calPage.value += "\n ";
+    if (i-startingPos+1 < 10)
+    document.calButtons.calPage.value += "0";
+    document.calButtons.calPage.value += i-startingPos+1;
+    document.calButtons.calPage.value += " ";
+    }
+    
+    document.calControl.Go.focus();
+}
+
+function getDaysInMonth(month, year) {
+    var days;
+        if (month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month== 12) days=31;
+            else if (month==4 || month==6 || month==9 || month==11) days=30;
+                else if (month==2) {
+        if (isLeapYear(year)) { days==29; }
+            else { days=28; }
+            
+        }
+            return (days);
+        
+}
+
+        function isLeapYear (Year) {
+            if (((Year % 4)==0) && ((year % 100)!=0) || ((Year % 400)==0)) {
+            return (true);
+            } else { return (false); }
+}
+
+</script>
+    
+</head>
+    
+    
+<body>
+    
+    <div align="center">
+    <strong>Select-A-Month</strong>
+    <form name="calControl" onSubmit="return false;" action="">
+<center>
+    <select name="month" onChange="selectDate()">
+        <option>January</option>
+        <option>February</option>
+        <option>March</option>
+        <option>April</option>
+        <option>May</option>
+        <option>June</option>
+        <option>July</option>
+        <option>August</option>
+        <option>September</option>
+        <option>October</option>
+        <option>November</option>
+        <option>December</option>
+    </select>
+    
+    
+<input name="year" type="text" size="4" maxlenght="4">
+<input type="button" name="Go" value="Generate!" onClick="selectDate()">
+</center>
+</form>
+
+
+<form name="calButtons">
+<textarea font="Courier" name="calPage" wrap="no" row="8" cols="22">
+</textarea>
+
+
+<center>
+<input type="button" name="previousYear" value=" << " onClick="setPreviousYear()">
+<input type="button" name="previousYear" value=" < " onClick="setPreviousMonth()">
+<input type="button" name="previousYear" value=" Today " onClick="setToday()">
+<input type="button" name="previousYear" value=" > " onClick="setNextMonth()">
+<input type="button" name="previousYear" value=" >> " onClick="setNextYear()">
+</center>
+
+    
+</form>
+
+    
+    
+</div>
+</body>
+    
+    
+    
+    
+    
+    
+    
+</html>

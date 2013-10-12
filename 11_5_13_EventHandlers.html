@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>How to do a doc write</title>
+</head>
+
+<body>
+
+
+<script LANGUAGE="javascript">
+//The document object is one of the most important objects of JavaScript
+//document.write("Welcome to my site!")
+function valid(form){
+    var input=0;
+    input=document.myform.data.value;
+    if (input<0){
+        alert("Please input a value that is less than 0");
+    }
+}
+
+</script>
+
+<script>
+document.bgColor="black"
+document.fgColor="#336699"
+</script>
+
+
+    <h3> Example of onBlur Event Handler</h3>
+
+<p>
+Try inputting a value less than zero:<br>
+</p>
+
+<form name="myform">
+<input type="text" name="data" value="" size=10 onBlur="valid(this.form)">
+</form>
+
+
+
+
+
+
+</body>
+</html>

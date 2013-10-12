@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>
+        Event Handler onChange
+    </title>
+    <script languae="JavaScript">
+        function valid(form){
+            var input=0;
+            input=document.myform.data.value;
+            alert("You have changed the value from 10 to " + input);
+        }
+    </script>
+    
+</head>
+
+
+
+<body>
+    <p>
+    onChange:
+    The event handler executes JavaScript code when input focus exits the field after the user modifies its text.
+    </p>
+    
+    
+    <form name="myform">
+        <input type="text" name="data" value="10" size="10" onChange="valid(this.form)">
+    </form>
+    
+    
+    
+    
+</body>
+</html>

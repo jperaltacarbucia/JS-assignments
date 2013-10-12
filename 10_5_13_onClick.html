@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>
+            onClick Event Handler
+        </title>
+        
+        
+        <SCRIPT LANGUAGE="JavaScript">
+            function valid(form){
+                var input=0;
+                input=document.myform.data.value;
+                alert("Hello " + input + " ! Welcome...");
+        }
+        </script>
+        
+    </head>
+    
+    
+    
+<body>
+    <h1>
+        Example of onClick Event Handler
+    </h1>
+    
+    <p>
+        Click on the button after inputting your name into the text box:
+    </p>
+    
+    
+    <form name="myform">
+        <input type="text" name="data" value="" size="10">
+        <input type="button" value="Click Here" onClick="valid(this.form)">
+    </form>
+    
+    
+    
+</body>
+    
+    
+    
+    
+    
+</html>
