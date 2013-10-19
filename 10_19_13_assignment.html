@@ -1,0 +1,26 @@
+class IfElseDemo {
+    public static void main(String[] args) {
+
+        int testscore = 76;
+        char grade;
+
+        if (testscore >= 90) {
+            grade = 'A';
+        } else if (testscore >= 80) {
+            grade = 'B';
+        } else if (testscore >= 70) {
+            grade = 'C';
+        } else if (testscore >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+        System.out.println("Grade = " + grade);
+    }
+}
+
+The score is 76. If the score is more than or equal to 90, your grade is A. 
+If the score is more than or equal to 80, your grade is B. If the score is 
+more than or equal to 70, your grade is C. If the score is more than or equal 
+to 60, your grade is D, else your grade is F. The score is 76, therefore is 
+going to print that the grade is a C.
